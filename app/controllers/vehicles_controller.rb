@@ -51,7 +51,8 @@ class VehiclesController < ApplicationController
   end
 
   def search
-    @vehicles = Vehicle.all
+     @vehicles = Vehicle.where(vehicle_type_id: VehicleType.where("name like ?", params[:vehicle_type]))
+    
   end
 
   private
@@ -60,6 +61,6 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_params
-      params.require(:vehicle).permit(:user_id, :vehicle_type_id, :year, :make, :model, :color, :horsepower, :powertrain, :acceleration, images: [])
+      params.require(:vehicle).permit(:user_id, :vehicle_type_id, :year, :make, :model, :color, :horsepower, :powertrain, :acceleration, :per_hour_price, :location, :description, images: [])
     end
 end

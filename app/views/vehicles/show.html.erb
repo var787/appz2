@@ -1,49 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @vehicle.images.each_with_index do |image, index| %>
+    <div class="carousel-item <%= index == 1 ? 'active' : '' %>">
+      <%= image_tag image.variant(resize_to_fill: [2200, 1000]), class: "d-block w-100", height: '700' %>
+    </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @vehicle.user_id %>
-</p>
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-lg-8 col-md-8 padding-right-30">
+      <div id="titlebar" class="listing-titlebar">
+        <div class="listing-titlebar-title">
+          <h2><%= "#{@vehicle.year} #{@vehicle.model} #{@vehicle.make}" %></h2>
+          <span>
+            <a href="#listing-location" class="listing-address">
+              <i class="fa fa-map-marker"></i>
+              <%= @vehicle.location %>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div id="listing-nav" class="listing-nav-container">
+        <ul class="listing-nav">
+          <li><a href="#listing-overview" class="">Overview</a></li>
+        </ul>
+      </div>
 
-<p>
-  <strong>Vehicle type:</strong>
-  <%= @vehicle.vehicle_type_id %>
-</p>
+      <div id="listing-overview" class="listing-section">
+        <%= @vehicle.description %>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 margin-top-75 sticky">
+      <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
+        <i class="sl sl-icon-check"></i> Verified Listing
+      <div class="tip-content">Listing has been verified and belongs the business owner or manager.</div></div>
 
-<p>
-  <strong>Year:</strong>
-  <%= @vehicle.year %>
-</p>
-
-<p>
-  <strong>Make:</strong>
-  <%= @vehicle.make %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @vehicle.model %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @vehicle.color %>
-</p>
-
-<p>
-  <strong>Horsepower:</strong>
-  <%= @vehicle.horsepower %>
-</p>
-
-<p>
-  <strong>Powertrain:</strong>
-  <%= @vehicle.powertrain %>
-</p>
-
-<p>
-  <strong>Acceleration:</strong>
-  <%= @vehicle.acceleration %>
-</p>
-
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>
+      <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
+        <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
+        <div class="row with-forms  margin-top-0">
+          <div class="col-lg-12">
+            <input type="text" id="date-picker" placeholder="Date" readonly="readonly">
+          </div>
+        </div>
+        <a href="pages-booking.html" class="button book-now fullwidth margin-top-5">Request To Book</a>
+      </div>
+    </div>
+  </div>
+</div>

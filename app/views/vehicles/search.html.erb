@@ -12,21 +12,21 @@
 
     <% @vehicles.each do |vehicle| %>
     <div class="col-lg-6 col-md-12">
-      <a href="listings-single-page.html" class="listing-item-container">
+      <%= link_to vehicle_path(vehicle), class: "listing-item-container" do %>
         <div class="listing-item">
-          <img src="images/listing-item-06.jpg" alt="">
-          <div class="listing-badge now-closed"><%= vehicle.per_hour_price %></div>
+          <%= image_tag vehicle.images.first.variant(resize_to_limit: [600, 600]) %>
+          <div class="listing-badge now-open">$<%= vehicle.per_hour_price %></div>
 
           <div class="listing-item-content">
-            <h3>Think Coffee</h3>
-            <span>215 Terry Lane, New York</span>
+            <h3><%= "#{vehicle.year} #{vehicle.make} #{vehicle.model}" %></h3>
+            <span>"Quick Quote"</span>
           </div>
           <span class="like-icon"></span>
         </div>
         <div class="star-rating" data-rating="5.0">
           <div class="rating-counter">(31 reviews)</div>
         <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
-      </a>
+      <% end %>
     </div>
     <% end %>
   </div>

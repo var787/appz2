@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, multiple: true %>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div class="field">
@@ -55,6 +55,24 @@
     <%= form.label :acceleration %>
     <%= form.text_field :acceleration %>
   </div>
+
+   <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+   <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :per_hour_price %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>
