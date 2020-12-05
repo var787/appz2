@@ -40,79 +40,20 @@
     </div>
 
     <div class="row">
-      <!-- Blog Post Item -->
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
+      <% VehicleType.active.each do |vt| %>
+        <div class="col-md-2">
+          <%= link_to search_vehicles_path(vt.name.try(:downcase)), class: "blog-compact-item-container" do %>
+            <div class="blog-compact-item">
+              <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+              <div class="blog-compact-item-content">
+                <ul class="blog-post-tags">
+                  <li><%= vt.name %></li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2">
-        <a href="pages-blog-post.html" class="blog-compact-item-container">
-          <div class="blog-compact-item">
-            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
-            <div class="blog-compact-item-content">
-              <ul class="blog-post-tags">
-                <li>Classic</li>
-              </ul>
-            </div>
-          </div>
-        </a>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>

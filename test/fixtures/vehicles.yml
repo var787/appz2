@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  vehicle_type: one
+  year: 1
+  make: MyString
+  model: MyString
+  color: MyString
+  horsepower: 1
+  powertrain: MyString
+  acceleration: 1.5
+
+two:
+  user: two
+  vehicle_type: two
+  year: 1
+  make: MyString
+  model: MyString
+  color: MyString
+  horsepower: 1
+  powertrain: MyString
+  acceleration: 1.5
