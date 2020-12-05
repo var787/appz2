@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!, except: [:search]
+  before_action :authenticate_user!, except: [:search, :show]
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -58,7 +58,7 @@ class VehiclesController < ApplicationController
 
   private
     def set_vehicle
-      @vehicle = current_user.vehicles.find(params[:id])
+      @vehicle = Vehicle.find(params[:id])
     end
 
     def vehicle_params

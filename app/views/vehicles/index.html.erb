@@ -1,43 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Vehicles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Vehicle type</th>
-      <th>Year</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Color</th>
-      <th>Horsepower</th>
-      <th>Powertrain</th>
-      <th>Acceleration</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="titlebar" class="gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Listings</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
     <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= vehicle.user_id %></td>
-        <td><%= vehicle.vehicle_type_id %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.make %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.color %></td>
-        <td><%= vehicle.horsepower %></td>
-        <td><%= vehicle.powertrain %></td>
-        <td><%= vehicle.acceleration %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="col-lg-4 col-md-12">
+      <%= link_to vehicle_path(vehicle), class: "listing-item-container", style: "margin-bottom: 0;" do %>
+        <div class="listing-item">
+          <%= image_tag vehicle.images.first.variant(resize_to_limit: [600, 600]) %>
+          <div class="listing-badge now-open">$<%= vehicle.per_hour_price %></div>
+
+          <div class="listing-item-content">
+            <h3><%= "#{vehicle.year} #{vehicle.make} #{vehicle.model}" %></h3>
+            <span>"Quick Quote"</span>
+          </div>
+        </div>
+        <div class="star-rating" data-rating="5.0">
+          <div class="rating-counter">0 reviews</div>
+        </div>
+      <% end %>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Vehicle', new_vehicle_path %>
+  </div>
+</div>
