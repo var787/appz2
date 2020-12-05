@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reservations/new'
+  get 'reservations/create'
+  get 'reservations/show'
+
   resources :vehicles
   root 'home#page'
   devise_for :users
