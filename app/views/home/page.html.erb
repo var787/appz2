@@ -1,5 +1,118 @@
-<% if user_signed_in? %>    
-<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>    
-<%= link_to "Sign in", new_user_session_path %>
-<% end %>
+<div class="main-search-container centered">
+  <div class="main-search-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>
+            Find Nearby Cars
+          </h2>
+          <h4>Expolore top-rated attractions, activities and more</h4>
+
+          <div class="main-search-input">
+            <div class="main-search-input-item">
+              <input type="text" placeholder="What are you looking for?" value=""/>
+            </div>
+
+            <div class="main-search-input-item location">
+              <div id="autocomplete-container">
+                <input id="autocomplete-input" type="text" placeholder="Location">
+              </div>
+              <a href="#"><i class="fa fa-map-marker"></i></a>
+            </div>
+
+            <button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="fullwidth padding-top-75 padding-bottom-75" data-background-color="#f9f9f9" style="background: rgb(249, 249, 249);">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="headline centered margin-bottom-50">
+          Browse by category
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Blog Post Item -->
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a href="pages-blog-post.html" class="blog-compact-item-container">
+          <div class="blog-compact-item">
+            <img src="https://resources.turo.com/f/81934/424x318/7f4e44231c/category-carousel_classic-2x.jpg" alt="">
+            <div class="blog-compact-item-content">
+              <ul class="blog-post-tags">
+                <li>Classic</li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "style";
+@import "main-color";
+
+.main-search-container {
+  background-image: url("https://resources.turo.com/f/81934/768x600/8858394b6e/hero-warm-768-bddc844c.jpg");
+}
+
+.m-r-20 {
+  margin-right: 20px;
+}
+
+.bg-light {
+  background: #fff !important;
+}
+
+.main-search-container:before {
+  background: none;
+}
+
+.simple-user-ico {
+  border: 1px solid;
+  border-radius: 50%;
+  padding: 8px 10px 8px 15px;
+  margin-top: -10px;
+}
+
+.blog-compact-item {
+  height: 120px;
+}
