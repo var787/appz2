@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_193422) do
+ActiveRecord::Schema.define(version: 2020_12_05_203319) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 2020_12_05_193422) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "vehicle_id", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price"
+    t.string "status"
+    t.integer "rating"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["vehicle_id"], name: "index_reservations_on_vehicle_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -41,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_193422) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -72,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_193422) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "reservations", "vehicles"
   add_foreign_key "vehicles", "users"
   add_foreign_key "vehicles", "vehicle_types"
 end

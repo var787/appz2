@@ -51,8 +51,8 @@ class VehiclesController < ApplicationController
   end
 
   def search
-     @vehicles = Vehicle.where(vehicle_type_id: VehicleType.where("name like ?", params[:vehicle_type]))
-    
+    # @vehicles = Vehicle.where(vehicle_type_id: VehicleType.where("name like ?", params[:vehicle_type]))
+    @vehicles = Vehicle.joins(:vehicle_type).where("vehicle_types.name like ?", params[:vehicle_type])
   end
 
   private
