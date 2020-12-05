@@ -7,6 +7,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    @reservation = @vehicle.reservations.new
   end
 
   def new

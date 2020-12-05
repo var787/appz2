@@ -44,16 +44,19 @@
       <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
         <i class="sl sl-icon-check"></i> Verified Listing
       <div class="tip-content">Listing has been verified and belongs the business owner or manager.</div></div>
-
-      <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-        <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
-        <div class="row with-forms  margin-top-0">
-          <div class="col-lg-12">
-            <%= datetime_field_tag :start_date %>
+      <%= form_for @reservation, url: reservations_new_path, method: :get do |f| %>
+        <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
+        <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
+          <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
+          <div class="row with-forms  margin-top-0">
+            <div class="col-lg-12">
+              <%= f.datetime_field :start_date %>
+              <%= f.datetime_field :end_date %>
+            </div>
           </div>
+          <%= f.submit "Request To Book", class: "button book-now fullwidth margin-top-5" %>
         </div>
-        <a href="pages-booking.html" class="button book-now fullwidth margin-top-5">Request To Book</a>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
