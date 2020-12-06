@@ -19,7 +19,8 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = current_user.vehicles.new(vehicle_params)
-
+    p @vehicle.inspect
+    p current_user.inspect
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
