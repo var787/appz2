@@ -49,7 +49,10 @@ class VehiclesController < ApplicationController
 
   def search
     if params[:vehicle_type] == "all"
-      @vehicles = Vehicle.where('lower(make) like (?) or lower(model) like (?) or lower(location) like (?)', "%#{params[:name].try(:downcase)}%", "%#{params[:name].try(:downcase)}%", "%#{params[:location].try(:downcase)}%")
+      query = []
+      query << "lower(location) like '%#{params[:location].try(:downcase)}%'" if !params[:location].blank?
+      query << "lower(make) like '%#{params[:name].try(:downcase)}%' or lower(model) like '%#{params[:name].try(:downcase)}%'" if !params[:name].blank?
+      @vehicles = Vehicle.where(query.join(' or '))
     else
       # @vehicles = Vehicle.where(vehicle_type_id: VehicleType.where("name like ?", params[:vehicle_type]))
       @vehicles = Vehicle.joins(:vehicle_type).where("vehicle_types.name like ?", params[:vehicle_type])
