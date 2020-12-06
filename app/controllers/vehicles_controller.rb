@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!, except: [:search]
+  before_action :authenticate_user!, except: [:search, :show]
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +19,8 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = current_user.vehicles.new(vehicle_params)
-
+    p @vehicle.inspect
+    p current_user.inspect
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
@@ -58,7 +59,7 @@ class VehiclesController < ApplicationController
 
   private
     def set_vehicle
-      @vehicle = current_user.vehicles.find(params[:id])
+      @vehicle = Vehicle.find(params[:id])
     end
 
     def vehicle_params

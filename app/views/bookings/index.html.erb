@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 padding-right-30 margin-top-65">
+      <div class="row">
+        <% @reservations.each do |reservation| %>
+          <div class="col-lg-12 col-md-12">
+            <div class="listing-item-container list-layout">
+              <a href="javascript:;" class="listing-item">
+                <div class="listing-item-image">
+                  <%= image_tag reservation.vehicle.images.first.variant(resize_to_limit: [600, 600]) %>
+                </div>
+                <div class="listing-item-content">
+                  <div class="listing-item-inner">
+                    <h3><%= "#{reservation.vehicle.year} #{reservation.vehicle.make} #{reservation.vehicle.model}" %> <i class="verified-icon"></i></h3>
+                    <span>
+                      <i class="fa fa-map-marker"></i>
+                      <%= reservation.vehicle.location %>
+                    </span>
+                    <div>
+                      Trip started <span><%= reservation.start_date.strftime("%d %B %Y") %> <%= reservation.start_date.strftime("%H:%M %P") %></span>
+                    </div>
+                    <div>
+                      Trip ended <span><%= reservation.end_date.strftime("%d %B %Y") %> <%= reservation.end_date.strftime("%H:%M %P") %></span>
+                    </div>
+                    <div>
+                      Total Cost <span>$<%= reservation.price %></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

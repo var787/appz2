@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
+    <%= form.label :images, "Vehicle Pictures" %>
+    <%= form.file_field :images, multiple: true, style: "border: none; box-shadow: none; height: auto; padding: 0;" %>
   </div>
 
   <div class="field">
@@ -76,5 +76,6 @@
 
   <div class="actions">
     <%= form.submit %>
+    <%= link_to 'Back', vehicles_path %>
   </div>
 <% end %>

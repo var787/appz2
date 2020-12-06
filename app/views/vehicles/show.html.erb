@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <% @vehicle.images.each_with_index do |image, index| %>
     <div class="carousel-item <%= index == 1 ? 'active' : '' %>">
-      <%= image_tag image.variant(resize_to_fill: [2200, 1000]), class: "d-block w-100", height: '700' %>
+      <%= image_tag image.variant(resize_to_limit: [500, 500]), class: "d-block w-100", height: '700' %>
     </div>
     <% end %>
   </div>
@@ -43,19 +43,24 @@
     <div class="col-lg-4 col-md-4 margin-top-75 sticky">
       <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
         <i class="sl sl-icon-check"></i> Verified Listing
-      <div class="tip-content">Listing has been verified and belongs the business owner or manager.</div></div>
-      <%= form_for @reservation, url: reservations_new_path, method: :get do |f| %>
-        <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
-        <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-          <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
-          <div class="row with-forms  margin-top-0">
-            <div class="col-lg-12">
-              <%= f.datetime_field :start_date %>
-              <%= f.datetime_field :end_date %>
+      </div>
+      <% if @vehicle.user != current_user %>
+        <%= form_for @reservation, url: new_reservation_path, method: :get do |f| %>
+          <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
+          <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
+            <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
+            <div class="row with-forms  margin-top-0">
+              <div class="col-lg-12">
+                <%= f.datetime_field :start_date, required: true %>
+                <%= f.datetime_field :end_date, required: true %>
+              </div>
             </div>
+            <%= f.submit "Continue to confirm your booking", class: "button book-now fullwidth margin-top-5" %>
           </div>
-          <%= f.submit "Request To Book", class: "button book-now fullwidth margin-top-5" %>
-        </div>
+        <% end %>
+      <% else %>
+        <%= link_to "Edit", edit_vehicle_path(@vehicle) %>
+        <%= link_to "Delete", vehicle_path(@vehicle), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
       <% end %>
     </div>
   </div>

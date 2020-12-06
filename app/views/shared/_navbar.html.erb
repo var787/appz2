@@ -3,13 +3,14 @@
     <div class="container">
       <div class="left-side">
         <div id="logo">
-          <%= link_to "Appz2", root_url, style: "font-size: 35px;" %>
+          <%= link_to image_tag("logo/logo.png"), root_url, style: "font-size: 35px;" %>
         </div>
       </div>
       <div class="right-side">
         <div class="header-widget">
           <%= link_to "List your car", new_vehicle_path, class: "sign-in popup-with-zoom-anim" %>
           <% if user_signed_in? %>
+            <%= link_to "Bookings", bookings_path, class: "sign-in popup-with-zoom-anim" %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to signout?" }, class: "sign-in popup-with-zoom-anim" %>
           <% else %>
             <%= link_to "Sign In", new_user_session_path, class: "sign-in popup-with-zoom-anim" %>
