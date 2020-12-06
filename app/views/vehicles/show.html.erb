@@ -1,9 +1,9 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% @vehicle.images.each_with_index do |image, index| %>
-    <div class="carousel-item <%= (index == 1 || index == 0) ? 'active' : '' %>">
-      <%= image_tag image.variant(resize_to_limit: [1980, 1263]), class: "d-block w-100", height: '700' %>
-    </div>
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+        <%= image_tag image.variant(resize_to_limit: [1980, 1263]), class: "d-block w-100", height: '700' %>
+      </div>
     <% end %>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
