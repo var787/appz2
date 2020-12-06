@@ -26,6 +26,6 @@ class ReservationsController < ApplicationController
   end
 
   def set_vehicle
-    @vehicle = Vehicle.find(params[:reservation][:vehicle_id] || session[:booking_attributes][:vehicle_id])
+    @vehicle = Vehicle.find(params[:reservation][:vehicle_id] || session[:booking_attributes][:vehicle_id]) #find a vehicle by vehicle Id through reservation key, if not found then check in session booking attributes. Reservation wi;; only retrieve ID in create action. otherwise vehicle ID will be found in booking attributes. 
   end
 end

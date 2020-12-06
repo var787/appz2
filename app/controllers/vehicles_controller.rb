@@ -19,15 +19,13 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = current_user.vehicles.new(vehicle_params)
-    p @vehicle.inspect
-    p current_user.inspect
-    respond_to do |format|
+
+    respond_to do |format| #
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+         #Respond to both HTML and Json requests. Status :http request status. If status not defined then default error would be 500. 
       end
     end
   end
@@ -36,10 +34,8 @@ class VehiclesController < ApplicationController
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,14 +43,14 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle.destroy
     respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' } #format.html is to process HTML requests
     end
   end
 
   def search
     # @vehicles = Vehicle.where(vehicle_type_id: VehicleType.where("name like ?", params[:vehicle_type]))
     @vehicles = Vehicle.joins(:vehicle_type).where("vehicle_types.name like ?", params[:vehicle_type])
+    # select * from joins vehicle_type on vehicle_type.id = vehicle.vehicle_type_id where vehicle_type.name = params[:vehicle_type]
   end
 
   private
