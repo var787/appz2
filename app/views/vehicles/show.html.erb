@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <% @vehicle.images.each_with_index do |image, index| %>
       <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-        <%= image_tag image.variant(resize_to_limit: [1980, 1263]), class: "d-block w-100", height: '700' %>
+        <%= image_tag image.variant(resize_to_limit: [3000, 2000]), class: "d-block w-100", height: '700' %>
       </div>
     <% end %>
   </div>
@@ -37,7 +37,7 @@
       </div>
 
       <div id="listing-overview" class="listing-section">
-        <%= @vehicle.description %>
+        <%= raw(@vehicle.description).html_safe %>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 margin-top-75 sticky">
@@ -59,8 +59,10 @@
           </div>
         <% end %>
       <% else %>
-        <%= link_to "Edit", edit_vehicle_path(@vehicle) %>
-        <%= link_to "Delete", vehicle_path(@vehicle), method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+        <div class="margin-top-35">
+        <%= link_to "Edit", edit_vehicle_path(@vehicle), class: "button fullwidth" %>
+        <%= link_to "Delete", vehicle_path(@vehicle), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "button fullwidth" %>
+        </div>
       <% end %>
     </div>
   </div>
